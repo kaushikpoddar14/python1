@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: ["main"]
 
-  python-verions: '3.9'
+  python-verions: [3.8]
 
 jobs:
   build:
