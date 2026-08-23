@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: ["main"]
 
-  python-verions: [3.8]
+  python-verions: [3.10]
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: install depencencies
         run: |
