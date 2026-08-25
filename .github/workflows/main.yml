@@ -20,16 +20,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        with:
-          args: >
-            - sonar.projectKey=build
-            - sonar.sources=.
-
       - name: install depencencies
         run: |
           python -m pip install --upgrade pip
@@ -40,6 +30,16 @@ jobs:
           python -m pytest
         env:
           PYTHONPATH: .
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=build
+            -Dsonar.sources=.
         
         
       
